@@ -1,4 +1,4 @@
-console.log("hello");
+console.log("Hello my name is Eviatar and welcome to my demo website");
 
 let productsHTML = "";
 
@@ -64,6 +64,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((buttonElement) => {
   buttonElement.addEventListener("click", () => {
     let matchingItems;
     const productId = buttonElement.dataset.productId;
+    let cartQuantity = 0;
 
     cart.forEach((item) => {
       if (productId === item.productId) {
@@ -73,11 +74,13 @@ document.querySelectorAll(".js-add-to-cart").forEach((buttonElement) => {
 
     if (matchingItems) {
       matchingItems.quantity += 1;
-      console.log(cart);
-
     } else {
       cart.push({ productId: productId, quantity: 1 });
-      console.log(cart);
     }
+
+    cart.forEach((items)=>{
+    cartQuantity += items.quantity
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity
+    });
   });
 });
