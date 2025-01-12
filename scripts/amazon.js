@@ -1,32 +1,35 @@
-console.log("Hello my name is Eviatar and welcome to my demo website");
+import {cart} from '../data/cart.js';
+import {products} from "../data/products.js";
 
+
+console.log("Hello my name is Eviatar and welcome to my demo website");
 let productsHTML = "";
 
-products.forEach((producs) => {
+products.forEach((product) => {
   productsHTML += `
         <div class="product-container">
           <div class="product-image-container">
             <img
               class="product-image"
-              src="${producs.image}"
+              src="${product.image}"
             />
           </div>
 
           <div class="product-name limit-text-to-2-lines">
-          ${producs.name}
+          ${product.name}
           </div>
 
           <div class="product-rating-container">
             <img
               class="product-rating-stars"
-              src="images/ratings/rating-${producs.rating.stars * 10}.png"
+              src="images/ratings/rating-${product.rating.stars * 10}.png"
             />
             <div class="product-rating-count link-primary">${
-              producs.rating.count
+                product.rating.count
             }</div>
           </div>
 
-          <div class="product-price">$${(producs.priceCents / 100).toFixed(
+          <div class="product-price">$${(product.priceCents / 100).toFixed(
             2
           )}</div>
 
@@ -53,7 +56,7 @@ products.forEach((producs) => {
           </div>
 
           <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
-            producs.id
+            product.id
           }">Add to Cart</button>
         </div>
 `;
