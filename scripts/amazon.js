@@ -1,7 +1,8 @@
-import { cart ,addToCart} from "../data/cart.js";
+import { cart, addToCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurency } from "../scripts/utils/money.js";
 
+updateCartQuantity();
 
 console.log("Hello my name is Eviatar and welcome to my demo website");
 let productsHTML = "";
