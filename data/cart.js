@@ -35,5 +35,8 @@ export function addToCart(productId) {
     });
     cart = newCart;
     console.log(cart);
+  }
+
+  export function updateQuantity (params) {
     
   }

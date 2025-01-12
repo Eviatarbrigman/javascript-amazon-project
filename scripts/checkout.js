@@ -18,7 +18,7 @@ console.log(matchingProduct);
 
 
 checkOutHTML +=`
-          <div class="cart-item-container">
+          <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
             <div class="delivery-date">Delivery date: Tuesday, June 21</div>
 
             <div class="cart-item-details-grid">
@@ -34,7 +34,7 @@ checkOutHTML +=`
                 <div class="product-price">$${formatCurency(matchingProduct.priceCents)}</div>
                 <div class="product-quantity">
                   <span> Quantity: <span class="quantity-label">${cartItem.quantity}</span> </span>
-                  <span class="update-quantity-link link-primary js-update-link">
+                  <span class="update-quantity-link link-primary js-update-link" data-product-id=${matchingProduct.id}>
                     Update
                   </span>
                   <span class="delete-quantity-link link-primary js-delete-link" data-product-id=${matchingProduct.id}>
@@ -87,7 +87,6 @@ checkOutHTML +=`
             `;
 
 });
-console.log(checkOutHTML);
 
 document.querySelector('.js-cart-item-container').innerHTML = checkOutHTML;
 
@@ -95,6 +94,10 @@ document.querySelectorAll('.js-delete-link')
 .forEach((link)=>{
 link.addEventListener('click',()=>{
 const productId = link.dataset.productId;
-deleteItemFromCart(productId);
+deleteItemFromCart(productId); 
+ const container = document.querySelector(`.js-cart-item-container-${productId}`);
+
+ container.remove();
+ 
 });
 });
