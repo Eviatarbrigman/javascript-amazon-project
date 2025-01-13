@@ -35,7 +35,10 @@
         </div>
 
         <div class="checkout-header-middle-section">
-          Checkout (<a class="return-to-home-link" href="amazon.html">3 items</a
+          Checkout (<a
+            class="return-to-home-link js-item-count"
+            href="amazon.html"
+          ></a
           >)
         </div>
 
@@ -54,8 +57,8 @@
         <div class="payment-summary">
           <div class="payment-summary-title">Order Summary</div>
 
-          <div class="payment-summary-row">
-            <div>Items (3):</div>
+          <div class="payment-summary-row js-items-count">
+            <div></div>
             <div class="payment-summary-money">$42.75</div>
           </div>
 
@@ -85,6 +88,7 @@
         </div>
       </div>
     </div>
+    <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
     <script type="module" src="scripts/checkout.js"></script>
   </body>
 </html>
