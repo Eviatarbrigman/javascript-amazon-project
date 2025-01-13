@@ -3,10 +3,15 @@ import {
   deleteItemFromCart,
   updateDeliveryOption,
 } from "../../data/cart.js";
-import { products } from "../../data/products.js";
+import { getProductFromCart } from "../../data/products.js";
 import { formatCurency } from "../../scripts/utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { deliveryOptions } from "../../data/deliveryOptions.js";
+import {
+  deliveryOptions,
+  getDeliveryOption,
+} from "../../data/deliveryOptions.js";
+import { renderPaymentSummery } from "./paymentSummery.js";
+import { renderCheckOut } from "../checkout.js";
 
 export function renderOrderSummery() {
   let cartQuantity = 0;
@@ -15,20 +20,10 @@ export function renderOrderSummery() {
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;
     const productId = cartItem.productId;
-    let matchingProduct;
-    products.forEach((product) => {
-      if (product.id === productId) {
-        matchingProduct = product;
-      }
-    });
+    let matchingProduct = getProductFromCart(productId);
 
     const deliveryOptionId = cartItem.deliveryOptionId;
-    let deliveryOption;
-    deliveryOptions.forEach((option) => {
-      if (option.id === deliveryOptionId) {
-        deliveryOption = option;
-      }
-    });
+    let deliveryOption = getDeliveryOption(deliveryOptionId);
     const today = dayjs();
     const deleveryDate = today.add(deliveryOption.deliveryDays, "days");
     const dateString = deleveryDate.format("dddd, MMMM D");
@@ -91,12 +86,10 @@ export function renderOrderSummery() {
       );
 
       container.remove();
+      renderPaymentSummery();
+      renderCheckOut();
     });
   });
-  document.querySelector(".js-item-count").innerHTML = `${cartQuantity} items`;
-  document.querySelector(
-    ".js-items-count"
-  ).innerHTML = `items (${cartQuantity})`;
 
   function deliveryOptionHTML(matchingProduct, cartItem) {
     let deliveryOptionHTML = "";
@@ -138,6 +131,7 @@ export function renderOrderSummery() {
 
       updateDeliveryOption(productId, deliveryOptionId);
       renderOrderSummery();
+      renderPaymentSummery();
     });
   });
 }
