@@ -9,6 +9,6 @@ console.log('works with 0');
 formatCurency(0) === '0.00' ? console.log('passed') : console.log('failed');
 
 console.log('rounds up to the nearest cent');
-formatCurency(2000.5) === '20.01'
+formatCurency(2000.5) === '20.02'
   ? console.log('passed')
   : console.log('failed');
