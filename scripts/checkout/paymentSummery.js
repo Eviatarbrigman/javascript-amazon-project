@@ -1,7 +1,7 @@
-import { cart } from "../../data/cart.js";
-import { getProductFromCart } from "../../data/products.js";
-import { formatCurency } from "../../scripts/utils/money.js";
-import { getDeliveryOption } from "../../data/deliveryOptions.js";
+import { cart } from '../../data/cart.js';
+import { getProductFromCart } from '../../data/products.js';
+import { formatCurency } from '../../scripts/utils/money.js';
+import { getDeliveryOption } from '../../data/deliveryOptions.js';
 
 export function renderPaymentSummery() {
   let productPriceCents = 0;
@@ -62,5 +62,5 @@ export function renderPaymentSummery() {
         Place your order
         </button>
     `;
-  document.querySelector(".js-payment-summery").innerHTML = paymentSummeryHTML;
+  document.querySelector('.js-payment-summery').innerHTML = paymentSummeryHTML;
 }

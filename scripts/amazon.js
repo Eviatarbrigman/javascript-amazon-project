@@ -1,11 +1,11 @@
-import { cart, addToCart } from "../data/cart.js";
-import { products } from "../data/products.js";
-import { formatCurency } from "../scripts/utils/money.js";
+import { cart, addToCart } from '../data/cart.js';
+import { products } from '../data/products.js';
+import { formatCurency } from '../scripts/utils/money.js';
 
 updateCartQuantity();
 
-console.log("Hello my name is Eviatar and welcome to my demo website");
-let productsHTML = "";
+console.log('Hello my name is Eviatar and welcome to my demo website');
+let productsHTML = '';
 
 products.forEach((product) => {
   productsHTML += `
@@ -62,9 +62,9 @@ products.forEach((product) => {
 `;
 });
 
-document.querySelector(".js-product-grid").innerHTML = productsHTML;
-document.querySelectorAll(".js-add-to-cart").forEach((buttonElement) => {
-  buttonElement.addEventListener("click", () => {
+document.querySelector('.js-product-grid').innerHTML = productsHTML;
+document.querySelectorAll('.js-add-to-cart').forEach((buttonElement) => {
+  buttonElement.addEventListener('click', () => {
     const productId = buttonElement.dataset.productId;
     addToCart(productId);
     updateCartQuantity();
@@ -76,6 +76,6 @@ function updateCartQuantity() {
 
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;
-    document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
   });
 }
