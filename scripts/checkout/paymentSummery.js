@@ -19,9 +19,6 @@ export function renderPaymentSummery() {
   const totalBeforTaxCents = productPriceCents + shippingPriceCents;
   const taxCents = totalBeforTaxCents * 0.1;
   const totalCents = totalBeforTaxCents + taxCents;
-  console.log(formatCurency(totalBeforTaxCents));
-  console.log(formatCurency(taxCents));
-  console.log(formatCurency(totalCents));
 
   const paymentSummeryHTML = `
 
