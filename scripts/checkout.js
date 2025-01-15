@@ -1,7 +1,7 @@
 import { renderOrderSummery } from './checkout/orderSummery.js';
 import { renderPaymentSummery } from './checkout/paymentSummery.js';
 import { getCartQuantity } from '../data/cart.js';
-import '../data/cart-oop.js';
+import '../data/cart-class.js';
 
 renderOrderSummery();
 renderPaymentSummery();
