@@ -81,10 +81,10 @@ function Cart(loacalStorageKey) {
 const cart = Cart('cart-oop');
 const businessCart = Cart('cart-business');
 
-cart.addToCart('83d4ca15-0f35-48f5-b7a3-1ea210004f2e');
-
 cart.loadFromStorage();
 businessCart.loadFromStorage();
+
+cart.addToCart('83d4ca15-0f35-48f5-b7a3-1ea210004f2e');
 
 console.log(cart);
 console.log(businessCart);
