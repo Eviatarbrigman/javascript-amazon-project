@@ -1,7 +1,11 @@
 import { cart, addToCart } from '../data/cart.js';
-import { products, loadProducts } from '../data/products.js';
+import { products, loadProductsFetch } from '../data/products.js';
 
-loadProducts(renderProductsGrid);
+loadProductsFetch().then(() => {
+  renderProductsGrid();
+});
+
+// loadProducts(renderProductsGrid);
 
 console.log('Hello my name is Eviatar and welcome to my demo website');
 
