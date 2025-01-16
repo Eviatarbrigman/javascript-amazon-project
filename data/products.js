@@ -537,6 +537,9 @@ export function loadProductsFetch() {
         }
         return new Product(productDetails);
       });
+    })
+    .catch((error) => {
+      console.log('Failed to load products', error);
     });
 }
 
@@ -550,6 +553,9 @@ export function loadProductsFetch() {
 //       return new Product(productDetails);
 //     });
 //     fun();
+//   });
+//   xhr.addEventListener('error', (error) => {
+//     console.log('Failed to load products');
 //   });
 
 //   xhr.open('GET', 'https://supersimplebackend.dev/products');
