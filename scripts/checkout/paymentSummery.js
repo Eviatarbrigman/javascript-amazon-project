@@ -66,7 +66,7 @@ export function renderPaymentSummery() {
     .querySelector('.js-place-order-button')
     .addEventListener('click', async () => {
       try {
-        const response = fetch('https://supersimplebackend.dev/orders', {
+        const response = await fetch('https://supersimplebackend.dev/orders', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -76,11 +76,20 @@ export function renderPaymentSummery() {
           }),
         });
 
+        // Check if the response is successful (status in the range 200-299)
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        // Await the JSON parsing of the response body
         const order = await response.json();
-        addOrder(order);
+        console.log(order);
+
+        addOrder(order); // Call the addOrder function with the parsed order data
       } catch (error) {
         console.log('Error placing order', error);
       }
-      window.location.href = 'orders.html';
+      // Optionally redirect to another page
+      // window.location.href = 'orders.html';
     });
 }
