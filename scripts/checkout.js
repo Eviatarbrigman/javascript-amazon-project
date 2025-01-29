@@ -22,44 +22,6 @@ async function loadPage() {
   renderCheckOut();
 }
 loadPage();
-/*
-Promise.all([
-  new Promise((resolve) => {
-    loadProducts(() => {
-      resolve('value1');
-    });
-  }),
-  new Promise((resolve) => {
-    loadCart(() => {
-      resolve();
-    });
-  }),
-]).then((values) => {
-  console.log(values);
-  renderOrderSummery();
-  renderPaymentSummery();
-  renderCheckOut();
-});
-*/
-
-// new Promise((resolve) => {
-//   loadProducts(() => {
-//     resolve('value1');
-//   });
-// })
-//   .then((value) => {
-//     console.log(value);
-//     return new Promise((resolve) => {
-//       loadCart(() => {
-//         resolve();
-//       });
-//     });
-//   })
-//   .then(() => {
-//     renderOrderSummery();
-//     renderPaymentSummery();
-//     renderCheckOut();
-//   });
 
 export function renderCheckOut() {
   const cartQuantity = getCartQuantity();

@@ -78,6 +78,23 @@
   flex-direction: column;
 }
 
+.grading {
+  padding-right: 120px;
+  align-content: center;
+  width: 100px;
+}
+.grading > span {
+  font-size: large;
+}
+
+.returns-text-name {
+  display: ruby-text;
+  align-content: center;
+  width: 50px;
+  margin-top: 18px;
+  margin-left: 30px;
+}
+
 .product-image-container {
   display: flex;
   justify-content: center;

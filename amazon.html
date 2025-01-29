@@ -62,6 +62,9 @@
       </div>
 
       <div class="amazon-header-right-section">
+        <a class="orders-link grading">
+          <span class="returns-text-name">Hello</span>
+        </a>
         <a
           class="orders-link header-link"
           href="orders.html">
@@ -87,5 +90,21 @@
     <script
       type="module"
       src="scripts/amazon.js"></script>
+    <script>
+      // Retrieve the token from localStorage
+      const token = localStorage.getItem('authToken'); // Replace 'authToken' with the key you used to store the token
+
+      if (token) {
+        // Decode the token to extract the username or name from the payload
+        const decodedToken = JSON.parse(atob(token.split('.')[1])); // Base64 decode the token to get the payload
+        const userName = decodedToken.sub || 'User'; // Use the name you have in your token payload, for example: 'firstName'
+
+        // Modify the content of the span element
+        const spanElement = document.querySelector('.returns-text-name');
+        spanElement.textContent = `Hello ${userName} :) `;
+      } else {
+        console.log('No token found');
+      }
+    </script>
   </body>
 </html>

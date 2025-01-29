@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      rel="stylesheet"
+      href="/styles/pages/login.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <label for="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required />
+
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required />
+
+        <button type="submit">Login</button>
+      </form>
+      <p id="error-message"></p>
+    </div>
+    <script>
+      document
+        .getElementById('loginForm')
+        .addEventListener('submit', function (event) {
+          event.preventDefault();
+
+          const username = document.getElementById('username').value;
+          const password = document.getElementById('password').value;
+          const errorMessage = document.getElementById('error-message');
+
+          fetch('http://localhost:8081/main/login', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, password }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              // Check if the response contains a token
+              if (data.token) {
+                localStorage.setItem('authToken', data.token); // Save token to localStorage
+                alert('Login successful!');
+                window.location.href = 'amazon.html'; // Redirect to amazon.html
+              } else {
+                errorMessage.textContent = 'Invalid username or password.';
+              }
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+              errorMessage.textContent = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+  </body>
+</html>
